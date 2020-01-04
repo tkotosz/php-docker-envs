@@ -1,0 +1,6 @@
+{
+    "require-dev": {
+        "phpmd/phpmd": "^2.8",
+        "pdepend/pdepend": "dev-feature/typed-properties as 2.99"
+    }
+}

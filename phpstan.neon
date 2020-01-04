@@ -1,0 +1,15 @@
+parameters:
+    level: max
+    paths:
+       - src
+    ergebnis:
+        allowAbstractClasses: true
+        classesAllowedToBeExtended:
+           - RuntimeException
+           - Symfony\Component\Console\Command\Command
+        classesNotRequiredToBeAbstractOrFinal: []
+        interfacesImplementedByContainers:
+            - Psr\Container\ContainerInterface
+    exceptionRules:
+       uncheckedExceptions:
+          - LogicException
