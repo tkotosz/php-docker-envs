@@ -25,8 +25,8 @@ docker-build-from-scratch: docker-init ## Build all docker images from scratch, 
 	$(DOCKER_COMPOSE) up -d --force-recreate $(CONTAINER)
 
 .PHONY: docker-test
-docker-test: docker-init docker-up ## Run the infrastructure tests for the docker setup
-	sh $(DOCKER_COMPOSE_DIR)/docker-test.sh
+docker-test:
+	$(DOCKER_COMPOSE_DIR)/docker-test.sh
 
 .PHONY: docker-build
 docker-build: docker-init ## Build all docker images. Build a specific image by providing the service name via: make docker-build CONTAINER=<service>
