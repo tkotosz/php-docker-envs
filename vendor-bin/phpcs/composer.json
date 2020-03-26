@@ -1,6 +1,0 @@
-{
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.5",
-        "slevomat/coding-standard": "^6.0"
-    }
-}

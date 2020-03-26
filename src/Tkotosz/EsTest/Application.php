@@ -8,7 +8,7 @@ use Tkotosz\EsTest\Model\Product;
 use Tkotosz\EsTest\Model\ProductId;
 use Tkotosz\EsTest\Model\ProductName;
 
-class Application
+final class Application
 {
     public function run(): void
     {

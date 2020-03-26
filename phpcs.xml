@@ -6,7 +6,7 @@
 
     <file>./src</file>
 
-    <config name="installed_paths" value="vendor-bin/phpcs/vendor/slevomat/coding-standard" />
+    <config name="installed_paths" value="vendor/slevomat/coding-standard" />
 
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
