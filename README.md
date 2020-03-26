@@ -7,5 +7,4 @@ dev env, customized version of https://github.com/paslandau/docker-php-tutorial
 make docker-up
 make docker-console
 composer install
-composer bin all install
 ```
