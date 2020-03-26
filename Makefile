@@ -25,7 +25,7 @@ docker-build-from-scratch: docker-init ## Build all docker images from scratch, 
 	$(DOCKER_COMPOSE) up -d --force-recreate $(CONTAINER)
 
 .PHONY: docker-test
-docker-test:
+docker-test: docker-init ## Run the infrastructure tests for the docker setup
 	$(DOCKER_COMPOSE_DIR)/docker-test.sh
 
 .PHONY: docker-build
@@ -46,9 +46,9 @@ docker-down: docker-init ## Stop all docker containers. To only stop one contain
 	$(DOCKER_COMPOSE) down $(CONTAINER)
 
 .PHONY: docker-ps
-docker-ps:
+docker-ps: ## Check running containers
 	$(DOCKER_COMPOSE) ps
 
 .PHONY: docker-console
-docker-console:
+docker-console: ## Connect to workspace container
 	$(DOCKER_COMPOSE) exec --user="www-data" workspace bash
