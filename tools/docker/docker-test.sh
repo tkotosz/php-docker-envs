@@ -60,7 +60,6 @@ function test() {
 }
 
 function setup() {
-    make docker-init > /dev/null 2>&1
     make docker-up > /dev/null 2>&1
 }
 
@@ -85,60 +84,58 @@ setup
 # TESTS BEGIN
 # ----------------
 
-DOCKER_COMPOSE="docker-compose -f ./.docker/docker-compose.yml --project-directory ./.docker"
-
 testGroup "Test workspace container"
 
 test 'Container is running' "$(
-  $DOCKER_COMPOSE ps | grep "workspace"
+  docker-compose ps | grep "workspace"
 )"
 
 test 'php version is 7.4' "$(
-  $DOCKER_COMPOSE exec workspace php -v | grep "PHP 7.4"
+  docker-compose exec workspace php -v | grep "PHP 7.4"
 )"
 
 test 'php xdebug installed' "$(
-  $DOCKER_COMPOSE exec workspace php -m | grep "xdebug"
+  docker-compose exec workspace php -m | grep "xdebug"
 )"
 
 test 'Zend OPcache installed' "$(
-  $DOCKER_COMPOSE exec workspace php -m | grep "Zend OPcache"
+  docker-compose exec workspace php -m | grep "Zend OPcache"
 )"
 
 test 'host.docker.internal is correct' "$(
-  $DOCKER_COMPOSE exec workspace dig host.docker.internal | grep -v NXDOMAIN
+  docker-compose exec workspace dig host.docker.internal | grep -v NXDOMAIN
 )"
 
 test 'Composer is installed' "$(
-  $DOCKER_COMPOSE exec workspace composer --version | grep -q "Composer"
+  docker-compose exec workspace composer --version | grep -q "Composer"
 )"
 
 testGroup "Test php-fpm container"
 
 test 'Container is running' "$(
-  $DOCKER_COMPOSE ps | grep "php-fpm"
+  docker-compose ps | grep "php-fpm"
 )"
 
 test 'php version is 7.4' "$(
-  $DOCKER_COMPOSE exec php-fpm php -v | grep "PHP 7.4"
+  docker-compose exec php-fpm php -v | grep "PHP 7.4"
 )"
 
 test 'php xdebug installed' "$(
-  $DOCKER_COMPOSE exec php-fpm php -m | grep "xdebug"
+  docker-compose exec php-fpm php -m | grep "xdebug"
 )"
 
 test 'Zend OPcache installed' "$(
-  $DOCKER_COMPOSE exec php-fpm php -m | grep "Zend OPcache"
+  docker-compose exec php-fpm php -m | grep "Zend OPcache"
 )"
 
 test 'host.docker.internal is correct' "$(
-  $DOCKER_COMPOSE exec php-fpm dig host.docker.internal | grep -v NXDOMAIN
+  docker-compose exec php-fpm dig host.docker.internal | grep -v NXDOMAIN
 )"
 
 testGroup "Test nginx container"
 
 test 'Container is running' "$(
-  $DOCKER_COMPOSE ps | grep "nginx"
+  docker-compose ps | grep "nginx"
 )"
 
 test 'Test it is available on localhost' "$(

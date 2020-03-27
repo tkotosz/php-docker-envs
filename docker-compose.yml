@@ -6,10 +6,9 @@ networks:
 
 services:
   nginx:
-    image: php-docker-tutorial/nginx
     build:
       context: .
-      dockerfile: ./nginx/Dockerfile
+      dockerfile: tools/docker/nginx/Dockerfile
       args:
         - APP_CODE_PATH=${APP_CODE_PATH_CONTAINER}
         - APP_GROUP=${APP_GROUP}
@@ -28,10 +27,9 @@ services:
           - ${APP_HOST}
 
   php-fpm:
-    image: php-docker-tutorial/php-fpm
     build:
       context: .
-      dockerfile: ./php-fpm/Dockerfile
+      dockerfile: tools/docker/php-fpm/Dockerfile
       args:
         - APP_CODE_PATH=${APP_CODE_PATH_CONTAINER}
         - APP_GROUP=${APP_GROUP}
@@ -46,10 +44,9 @@ services:
       - backend
 
   workspace:
-    image: php-docker-tutorial/workspace
     build:
       context: .
-      dockerfile: ./workspace/Dockerfile
+      dockerfile: tools/docker/workspace/Dockerfile
       args:
         - APP_CODE_PATH=${APP_CODE_PATH_CONTAINER}
         - APP_GROUP=${APP_GROUP}
