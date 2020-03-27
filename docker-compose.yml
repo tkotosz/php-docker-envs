@@ -7,8 +7,8 @@ networks:
 services:
   nginx:
     build:
-      context: .
-      dockerfile: tools/docker/nginx/Dockerfile
+      context: tools/docker
+      dockerfile: nginx/Dockerfile
       args:
         - APP_CODE_PATH=${APP_CODE_PATH_CONTAINER}
         - APP_GROUP=${APP_GROUP}
@@ -28,8 +28,8 @@ services:
 
   php-fpm:
     build:
-      context: .
-      dockerfile: tools/docker/php-fpm/Dockerfile
+      context: tools/docker
+      dockerfile: php-fpm/Dockerfile
       args:
         - APP_CODE_PATH=${APP_CODE_PATH_CONTAINER}
         - APP_GROUP=${APP_GROUP}
@@ -45,8 +45,8 @@ services:
 
   workspace:
     build:
-      context: .
-      dockerfile: tools/docker/workspace/Dockerfile
+      context: tools/docker
+      dockerfile: workspace/Dockerfile
       args:
         - APP_CODE_PATH=${APP_CODE_PATH_CONTAINER}
         - APP_GROUP=${APP_GROUP}
