@@ -40,8 +40,8 @@ USER root
 # php config
 COPY ./.shared/config/php/conf.d/*  /usr/local/etc/php/conf.d/
 
-# install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# install composer v1 (Magento doesn't support composer v2 yet)
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --1
 
 # workdir
 ARG APP_CODE_PATH="/var/www/current"

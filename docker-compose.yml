@@ -43,6 +43,27 @@ services:
     networks:
       - backend
 
+  database:
+    image: mariadb:10.4
+    command:
+      - '--ignore-db-dir=lost+found'
+      - '--max_allowed_packet=4M'
+    environment:
+      - MYSQL_DATABASE=${DB_MAGENTO_DATABASE}
+      - MYSQL_USER=${DB_MAGENTO_USER}
+      - MYSQL_PASSWORD=${DB_MAGENTO_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    networks:
+      - backend
+
+  elasticsearch:
+    image: elasticsearch:7.7.1
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - discovery.type=single-node
+    networks:
+      - backend
+
   workspace:
     build:
       context: tools/docker

@@ -11,5 +11,20 @@ wget -q -O /usr/local/bin/install-php-extensions https://raw.githubusercontent.c
 # install extensions
 chmod uga+x /usr/local/bin/install-php-extensions && sync && install-php-extensions \
     opcache \
-    xdebug \
+    bcmath \
+    ctype \
+    curl \
+    dom \
+    gd \
+    hash \
+    iconv \
+    intl \
+    mbstring \
+    openssl \
+    pdo_mysql \
+    simplexml \
+    soap \
+    xsl \
+    zip \
+    sockets \
 ;

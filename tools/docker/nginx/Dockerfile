@@ -34,6 +34,7 @@ RUN /tmp/scripts/modify_config.sh /etc/nginx/nginx.conf \
 
 # nginx app config
 COPY ${SERVICE_DIR}/sites-available/* /etc/nginx/sites-available/
+COPY ${SERVICE_DIR}/includes/* /etc/nginx/includes/
 ARG APP_CODE_PATH
 RUN /tmp/scripts/modify_config.sh /etc/nginx/sites-available/default.conf \
     "__NGINX_ROOT" \
