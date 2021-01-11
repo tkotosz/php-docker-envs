@@ -26,3 +26,10 @@ bin/magento setup:install --admin-email "kotosy+magento@gmail.com" --admin-first
 bin/magento module:disable Magento_TwoFactorAuth
 bin/magento setup:upgrade
 ```
+
+# Use redis for the session & cache
+```
+bin/magento setup:config:set --session-save=redis --session-save-redis-host='redis-session' --session-save-redis-port='6379' --session-save-redis-db=1
+bin/magento setup:config:set --cache-backend=redis --cache-backend-redis-server='redis-cache' --cache-backend-redis-port='6379' --cache-backend-redis-db=2
+bin/magento setup:config:set --page-cache=redis --page-cache-redis-server='redis-cache' --page-cache-redis-port='6379' --page-cache-redis-db=3
+```
